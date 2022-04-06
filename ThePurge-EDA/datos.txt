@@ -1,0 +1,44 @@
+--------------------
+AIpr
+BBsitaBBlin
+BBsitaBBlin1
+BBsitaBBlin2
+BBsitaBBlin3
+BBsitaBBlin4
+BBsitaBBlin5
+BBsitaBBlin6
+BBstaBBlin1
+BBstaBBlin22
+BBstaBBlin23
+BBstaBBlin24
+BBstaBBlin25
+BBstaBBlin27
+BBstaBBlin61
+Demo
+DivergentV1
+DivergentV2
+Dummy
+HomeLander
+HomelanderV2
+JohnnyBGood
+Null
+Xx_elNai_xX
+marc_v1
+--------------------
+Choose the players
+[H[2J[3J-----------------------------------
+Veces ganadas por el jugador 1 (BBstaBBlin61):
+25
+Veces ganadas por el jugador 2 (AIpr):
+31
+Veces ganadas por el jugador 3 (HomelanderV2):
+36
+Veces ganadas por el jugador 4 (DivergentV2):
+34
+Out of:
+500
+-----------------------------------
+Highest score: 
+3205
+Seed: 
+125
