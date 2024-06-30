@@ -20,7 +20,7 @@ ifeq ($(strip $(PROFILE)),1)
 endif
 
 ifeq ($(strip $(DEBUG)),1)
-	DEBUGFLAGS=-g -O0 -fno-inline #-D_GLIBCXX_DEBUG 
+	DEBUGFLAGS=-g -O0 -fno-inline #-D_GLIBCXX_DEBUG
 endif
 
 CXXFLAGS = -std=c++11 -Wall -Wno-unused-variable -fPIC $(PROFILEFLAGS) $(DEBUGFLAGS) -O$(strip $(OPTIMIZE))
@@ -34,12 +34,14 @@ PLAYERS_OBJ = $(patsubst %.cc, %.o, $(PLAYERS_SRC)) $(EXTRA_OBJ) $(DUMMY_OBJ)
 
 # Rules
 
-OBJ = Structs.o Settings.o State.o Info.o Random.o Board.o Action.o Player.o Registry.o Utils.o 
+OBJ = Structs.o Settings.o State.o Info.o Random.o Board.o Action.o Player.o Registry.o Utils.o
 
 all: Game
 
 clean:
 	rm -rf Game  *.o *.exe Makefile.deps
+	cp AIDummy.o.Linux64 AIDummy.o
+	cp -r other_players/ ./
 
 add_player:
 	rm -rf Game Game.o Makefile.deps
@@ -50,13 +52,13 @@ update_git:
 	rm -rf EDA-ThePurge-ObjectFiles
 	git clone $(GAME_OBJ_REP)
 
-Game:  $(OBJ) Game.o Main.o $(PLAYERS_OBJ) 
+Game:  $(OBJ) Game.o Main.o $(PLAYERS_OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 SecGame: $(OBJ) SecGame.o SecMain.o
 	$(CXX) $^ -o $@ $(LDFLAGS) -lrt
 
-%.exe: %.o $(OBJ) SecGame.o SecMain.o 
+%.exe: %.o $(OBJ) SecGame.o SecMain.o
 	$(CXX) $^ -o $@ $(LDFLAGS) -lrt
 
 Makefile.deps: *.cc

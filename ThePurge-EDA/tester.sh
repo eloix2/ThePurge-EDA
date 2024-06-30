@@ -40,11 +40,11 @@ highest_score=0;
 seed;
 
 while [ $counter -le $Reps ]
-do	
+do
 	temp_seed=$(( counter ))
 	./Game ${Jugadores[$((0))]} ${Jugadores[$((1))]} ${Jugadores[$((2))]} ${Jugadores[$((3))]} -s $(( temp_seed )) < default.cnf > default.res
 	#sleep .2
-	
+
 	tail -4 default.res | head -1 >> Resultados.txt
 	resultado[0]=$(tail -4 default.res | head -1 | awk '{print $2}')
 	resultado[1]=$(tail -4 default.res | head -1 | awk '{print $3}')
@@ -56,15 +56,15 @@ do
 	resultado[7]=$(tail -4 default.res | head -1 | awk '{print $5}')
 
 	for j in 0 1 2 3
-	do 
+	do
 		temp=${resultado[$((j))]}
 		if(( $((temp)) > $((highest_score)) ))
-		then 
+		then
 			highest_score=$temp
 			seed=temp_seed
 		fi
 	done
-	
+
 	max=${resultado[0]}
 	for j in 1 2 3
 	do
@@ -74,7 +74,7 @@ do
 			max=$temp
 		fi
 	done
-	
+
 	for j in 0 1 2 3
 	do
 		temp=${resultado[$((7-j))]}
@@ -105,7 +105,7 @@ printf ${Jugadores[3]}
 printf "):\n"
 echo ${contador[3]}
 echo "Out of:"
-echo $((Reps*4))
+echo $((Reps))
 echo "-----------------------------------"
 echo "Highest score: "
 echo $highest_score

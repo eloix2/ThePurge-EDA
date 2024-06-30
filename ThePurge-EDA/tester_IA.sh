@@ -2,9 +2,9 @@
 
 declare -a Jugadores
 
-Jugadores[0]=AIpr
-Jugadores[1]=HomeLander
-Jugadores[2]=DivergentV1
+Jugadores[0]=Amadeus
+Jugadores[1]=BBsitaBBlin9
+Jugadores[2]=BBstaBBlin65
 Jugadores[3]=BBstaBBlin24
 Reps=10
 
@@ -15,7 +15,7 @@ declare -a resultado_3
 declare -a resultado_4
 
 while [ $counter -le $Reps ]
-do	
+do
 
     ./Game ${Jugadores[0]} ${Jugadores[1]} ${Jugadores[2]} ${Jugadores[3]} -s $(( RANDOM )) < default.cnf > default.res
     tail -4 default.res | head -1 >> Resultados.txt
@@ -28,7 +28,7 @@ do
 
 done
 
-clear
+# clear
 
 echo "AIpr --- HoLan --- Dive --- BBstaBBlin"
 echo "-----------------------------------"
