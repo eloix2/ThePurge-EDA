@@ -4,7 +4,7 @@
  * Write the name of your player and save this file
  * with the same name and .cc extension.
  */
-#define PLAYER_NAME Miquella
+#define PLAYER_NAME Miquella2
 
 struct PLAYER_NAME : public Player
 {
@@ -38,14 +38,20 @@ struct PLAYER_NAME : public Player
         // Bazooka finder for warriors
         for (int warriorId : warriorsVec)
         {
-            searchAndMove(warriorId, Bazooka, false, -1, -1);
+            if (citizen(warriorId).weapon != Bazooka && boardHasBazooka())
+            {
+                searchAndMove(warriorId, Bazooka, false, -1, -1);
+            }
         }
 
         if (is_day())
         {
             for (int warriorId : warriorsVec)
             {
-                searchAndMove(warriorId, Gun, true, Money, Food);
+                if (citizen(warriorId).weapon == Bazooka || !boardHasBazooka())
+                {
+                    searchAndMove(warriorId, Gun, true, Money, Food);
+                }
             }
 
             for (int builderId : buildersVec)
@@ -73,6 +79,19 @@ struct PLAYER_NAME : public Player
                 escapeMovement(builderId);
             }
         }
+    }
+
+    bool boardHasBazooka()
+    {
+        for (int i = 0; i < board_rows(); ++i)
+        {
+            for (int j = 0; j < board_cols(); ++j)
+            {
+                if (cell(i, j).weapon == Bazooka)
+                    return true;
+            }
+        }
+        return false;
     }
 
     void searchAndMove(int id, int weaponType, bool searchBonus, int bonus1, int bonus2, bool searchEnemy = false, int enemyType = -1)
