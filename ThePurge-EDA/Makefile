@@ -41,7 +41,7 @@ all: Game
 clean:
 	rm -rf Game  *.o *.exe Makefile.deps
 	cp AIDummy.o.Linux64 AIDummy.o
-	cp -r other_players/ ./
+	cp -r ./other_players/* ./
 
 add_player:
 	rm -rf Game Game.o Makefile.deps
