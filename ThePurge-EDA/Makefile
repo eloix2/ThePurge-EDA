@@ -2,6 +2,7 @@ DUMMY_OBJ = AIDummy.o
 
 # Add here any extra .o player files you want to link to the executable
 EXTRA_OBJ = $(wildcard AI*.o)
+EXTRA_OBJ2 = $(wildcard ./other_players/AI*.o)
 
 # Configuration
 OPTIMIZE = 3 # Optimization level    (0 to 3)
@@ -30,7 +31,7 @@ LDFLAGS  = -std=c++11                            $(PROFILEFLAGS) $(DEBUGFLAGS) -
 # The following two lines will detect all your players (files matching "AI*.cc")
 
 PLAYERS_SRC = $(wildcard AI*.cc)
-PLAYERS_OBJ = $(patsubst %.cc, %.o, $(PLAYERS_SRC)) $(EXTRA_OBJ) $(DUMMY_OBJ)
+PLAYERS_OBJ = $(patsubst %.cc, %.o, $(PLAYERS_SRC)) $(EXTRA_OBJ) $(EXTRA_OBJ2) $(DUMMY_OBJ)
 
 # Rules
 
@@ -41,7 +42,6 @@ all: Game
 clean:
 	rm -rf Game  *.o *.exe Makefile.deps
 	cp AIDummy.o.Linux64 AIDummy.o
-	cp -r ./other_players/* ./
 
 add_player:
 	rm -rf Game Game.o Makefile.deps
